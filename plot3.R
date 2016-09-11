@@ -11,12 +11,15 @@ d1 <- as.Date("2007-02-01")
 d2 <- as.Date("2007-02-02")
 newdata <- data[data$Date %in% d1:d2,]
 # subsets data for required dates and stores in new object newdata
+png(file="plot3.png")
+# opens graphics device
 plot(newdata$newdate, newdata$Sub_metering_1, type= "n", ylab = "Energy sub metering", xlab = "")
+#draws empty plot
 lines(newdata$newdate, newdata$Sub_metering_1)
 lines(newdata$newdate, newdata$Sub_metering_2, col="red")
 lines(newdata$newdate, newdata$Sub_metering_3, col="blue")
+#adds lines for each variable
 legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col=c("black", "red", "blue"), lwd=1)
-# creates required plot
-dev.copy(png,'plot3.png')
+#creates legend
 dev.off()
-#saves to PNG
+#closes graphics device

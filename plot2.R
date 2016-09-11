@@ -11,8 +11,9 @@ d1 <- as.Date("2007-02-01")
 d2 <- as.Date("2007-02-02")
 newdata <- data[data$Date %in% d1:d2,]
 # subsets data for required dates and stores in new object newdata
+png(file="plot2.png")
+# opens graphics device
 plot(newdata$newdate, newdata$Global_active_power, type="l", xlab = "", ylab = "Global Active Power (kilowatts)")
 #creates plot
-dev.copy(png,'plot2.png')
 dev.off()
-#saves to PNG
+#closes graphics device

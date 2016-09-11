@@ -11,8 +11,9 @@ d1 <- as.Date("2007-02-01")
 d2 <- as.Date("2007-02-02")
 newdata <- data[data$Date %in% d1:d2,]
 # subsets data for required dates and stores in new object newdata
+png(file="plot1.png")
+# opens graphics device
 hist(newdata$Global_active_power, xlab="Global Active Power (kilowatts)", main = "Global Active Power", col = "red")
 # plots the histogram
-dev.copy(png,'plot1.png')
 dev.off()
-#saves to PNG
+#closes graphics device

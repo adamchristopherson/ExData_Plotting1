@@ -12,7 +12,12 @@ d2 <- as.Date("2007-02-02")
 newdata <- data[data$Date %in% d1:d2,]
 # subsets data for required dates and stores in new object newdata
 
+png(file="plot4.png")
+# opens graphics device
+par(mar = c(4, 4, 2, 2))
+#sets margins
 par(mfrow = c(2,2))
+#sets plot layout - 2 x 2 grid of plots by row
 plot(newdata$newdate, newdata$Global_active_power, type="l", xlab = "", ylab = "Global Active Power")
 plot(newdata$newdate, newdata$Voltage, type="l", xlab = "datetime", ylab = "Voltage")
 plot(newdata$newdate, newdata$Sub_metering_1, type= "n", ylab = "Energy sub metering", xlab = "")
@@ -21,9 +26,6 @@ lines(newdata$newdate, newdata$Sub_metering_2, col="red")
 lines(newdata$newdate, newdata$Sub_metering_3, col="blue")
 legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col=c("black", "red", "blue"), lwd=1, bty = "n")
 plot(newdata$newdate, newdata$Global_reactive_power, type="l", xlab = "datetime", ylab = "Global_reactive_power")
-
-
-
-dev.copy(png,'plot4.png')
+#creates four plots required
 dev.off()
-#saves to PNG
+#closes graphics device
